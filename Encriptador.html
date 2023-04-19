@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title> Encriptador de texto</title>
+        <link rel="stylesheet" href="Encriptador.css">
+        <link rel="stylesheet" href="reset.css"> 
+    </head>
+    <body>
+        <section id="sect1" class="sect">
+            <video src="F.mp4" autoplay="true" muted="true" loop="true"></video>
+        </section>
+        <div class="Logo">
+            <img src="Logo.png">
+        </div>
+        <div class="Logo2">
+            <img src="Logo letras.png">
+        </div>
+        <div class="Rectangulo">
+            <textarea id="Rect" rows="41" cols="50">Pega aquí el mensaje a desencriptar...</textarea>
+        </div>
+        <div class="Button_encriptar">
+            <img src="Button_Encriptar.png" onclick="encriptar()">
+        </div>
+        <div class="Button_desencriptar" onclick="desencriptar()">
+            <img src="Button_Desencriptar.png">
+        </div>
+        <div class="Copy">
+            <img src="Copy_button.png" onclick="Copy()">
+        </div>
+        <div class="Aviso">
+            <img src="Frame 1.png">
+        </div>
+        <div class="Text">
+            <textarea id="Text" rows="30" cols="90"></textarea>
+        </div>
+        <footer>
+            <p class="Copyright"> &copy Copyright Encriptador by:Brayan Marín - 2023</p>
+        </footer>
+    </body>
+
+    <script>
+        var pantalla = document.querySelector('canvas');
+        var pincel = pantalla.getContext('2d');
+        pincel.fillStyle = "#E1E3E3";
+        pincel.fillRect(0,0,1440,1024);
+        function encriptar() {
+                var entrada = document.getElementById("Text").value;
+                var salida = entrada.replace(/e/g, "enter").replace(/i/g, "imes").replace(/a/g, "ai").replace(/o/g, "ober").replace(/u/g, "ufat");
+                document.getElementById("Rect").value = salida;
+            }
+
+            function desencriptar() {
+                var entrada = document.getElementById("Rect").value;
+                var salida = entrada.replace(/enter/g, "e").replace(/imes/g, "i").replace(/ai/g, "a").replace(/ober/g, "o").replace(/ufat/g, "u");
+                document.getElementById("Text").value = salida;
+            }
+
+            function Copy(){
+                var texto = document.getElementById("Rect").value;
+                var tempEl = document.createElement("textarea");
+                tempEl.value = texto;
+                document.body.appendChild(tempEl);
+                tempEl.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempEl);
+            }
+    </script>      
+</html>
